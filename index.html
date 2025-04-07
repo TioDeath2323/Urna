@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urna Eletrônica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .radio-buttons {
+            margin-top: 10px;
+        }
+
+        .radio-buttons label {
+            display: block;
+            margin-top: 5px;
+        }
+
+        .result-message {
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+            color: #00ff3c;
+        }
+
+        .error-message {
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+            color: #ff001a;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Urna Eletrônica</h1>
+
+        <!-- Tela de Índice -->
+        <div id="telaInicial">
+            <p>Bem-vindo à Urna Eletrônica.</p>
+            <button onclick="abrirtelaVoto()">Iniciar Votação</button>
+        </div>
+
+        <!-- Tela de Votação -->
+        <div id="telaVoto" class="hidden">
+            <h2>Votação</h2>
+            <div class="form-group">
+                <label for="name">Digite seu nome:</label>
+                <input type="text" id="name" placeholder="Seu nome" />
+            </div>  
+            
+            <div class="form-group">
+                <label>Escolha seu candidato:</label>
+                <div class="radio-buttons">
+                    <label><input type="radio" name="candidate" value="Candidato Bolsonaro"> Bolsonaro | 22</label>
+                    <img src="https://cdn.discordapp.com/attachments/1133884940740726805/1358565948965130240/Borsonaro.png?ex=67f44ea3&is=67f2fd23&hm=2af3c696865d761f772669555e65ffe0cabfa067c2ffafb4e4c6b59bcb9ac37c&" alt="Candidato Bolsonaro">
+                    <label><input type="radio" name="candidate" value="Candidato Ladrão"> Lula | 13</label>
+                    <img src="https://cdn.discordapp.com/attachments/1133884940740726805/1358565949254402098/Lula2.png?ex=67f44ea3&is=67f2fd23&hm=dbd80c8861986c78519140558186a42d5815230e38232993b178d58f6812854a&" alt="Candidato Ladrão">
+                    <label><input type="radio" name="candidate" value="Candidato Ciro Gomes"> Ciro Gomes | 12</label>
+                    <img src="https://cdn.discordapp.com/attachments/1133884940740726805/1358568096394379518/Ciro.jpg?ex=67f450a3&is=67f2ff23&hm=847c7eb217bf19b2e54c2f361b1b66cefa5a732051e44ae724c3dae32389ab82&" alt="Candidato Ciro Gomes">
+                    <label><input type="radio" name="candidate" value="Candidato Felipe Dávila"> Felipe Dávila | 10</label>
+                    <img src="https://cdn.discordapp.com/attachments/1133884940740726805/1358565948755411094/Davila.png?ex=67f44ea3&is=67f2fd23&hm=297d9a10fd5d66a69399cdc90635bde29fb77d25b12a2aade09e21320d14de57&" alt="Candidato Felipe Dávila">
+                    <label><input type="radio" name="candidate" value="Candidata Soraya"> Soraya | 44</label>
+                    <img src="https://cdn.discordapp.com/attachments/1133884940740726805/1358565949468573917/soraya2.png?ex=67f44ea3&is=67f2fd23&hm=049438c7b42ca7216db1bb6168f3a302965b248dfa4c00d74334af95c6398f16&" alt="Candidata Soraya">
+                    <label><input type="radio" name="candidate" value="Candidato P. Kelmon"> P. Kelmon | 14</label>
+                    <img src="https://cdn.discordapp.com/attachments/1133884940740726805/1358565949753524365/P_Kelmon.png?ex=67f44ea3&is=67f2fd23&hm=5ff493b79f315dd8041b4e0efebc4a0d65d04377c6c433ee8a165975692cab17&" alt="Candidato P.Kelmon">
+                    <label><input type="radio" name="candidate" value="Candidata Tebet"> Simone Tebet | 15</label>
+                    <img src="https://media.discordapp.net/attachments/1133884940740726805/1358562896384364855/Tebet.jpeg?ex=67f44bcb&is=67f2fa4b&hm=65b4c907b954df1b0f910ed1af14cd06c07a7e6d8d6eefd05c43b364f751a1a2&=&format=webp" alt="Candidata Tebet">
+                    <label><input type="radio" name="candidate" value="Candidato Daciolo"> Cabo Daciolo | 51</label>
+                    <img src="https://cdn.discordapp.com/attachments/1133884940740726805/1358565948537442304/Daciolo.png?ex=67f44ea3&is=67f2fd23&hm=77d630ed73bf04b91f07b3971751ab9a1b7426aff975a7e774f78e40f35134e5&" alt="Candidato Daciolo">
+                </div>
+            </div>
+            
+            <button onclick="submitVote()">Votar</button>
+            <div id="message" class="result-message hidden"></div>
+            <div id="errorMessage" class="error-message hidden"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Tela de FIM -->
+        <div id="telaFim" class="hidden">
+            <h2>F I M !!!</h2>
+        </div>
+    </div>    
+    <script>
+        // Função para exibir a tela de votação
+        function abrirtelaVoto() {
+            document.getElementById("telaInicial").classList.add("hidden");
+            document.getElementById("telaVoto").classList.remove("hidden");
+        }
+
+        // Função para registrar o voto
+        function submitVote() {
+            var name = document.getElementById("name").value;
+            var somurna = document.getElementById('somVoto').play();
+            var candidate = document.querySelector('input[name="candidate"]:checked');
+
+            if (name === "") {
+                document.getElementById("errorMessage").textContent = "Por favor, insira seu nome!";
+                document.getElementById("errorMessage").classList.remove("hidden");
+                document.getElementById('somVoto').pause();
+                document.getElementById("message").classList.add("hidden");
+                return;
+            }
+
+            if (!candidate) {
+                document.getElementById("errorMessage").textContent = "Por favor, escolha um candidato!";
+                document.getElementById("errorMessage").classList.remove("hidden");
+                document.getElementById("message").classList.add("hidden");
+                return;
+            }
+
+            document.getElementById("errorMessage").classList.add("hidden");
+            var candidateName = candidate.value;
+            document.getElementById("message").textContent = `Voto registrado! ${name}, você votou no(a) ${candidateName}.`;
+            document.getElementById("message").classList.remove("hidden");
+
+            // Esconde a tela de votação e mostra a tela de FIM
+            document.getElementById("telaVoto").classList.add("hidden");
+            document.getElementById("telaFim").classList.remove("hidden");
+        }
+
+
+    </script>
+</body>
+</html>
+
+<audio id="somVoto" src="D:\Urna\urna.mp3" preload="auto"></audio>
+
